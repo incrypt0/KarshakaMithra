@@ -64,6 +64,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 //   name: name,
                 //   phoneNo: phoneNo,
                 // );
+                
               },
               textColor: Colors.white,
               child: Text("Register"),

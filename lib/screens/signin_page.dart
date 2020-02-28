@@ -1,9 +1,8 @@
+import 'package:farm_app/screens/homepage.dart';
 import 'package:farm_app/widgets/signin.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:shadow/shadow.dart';
-
-
 
 class SignInPageTest extends StatefulWidget {
   final Function toggleSignIn;
@@ -35,7 +34,7 @@ class _SignInPageStateTest extends State<SignInPageTest> {
         ),
         Spacer(),
         Text(
-          "Welcome to FarmApp",
+          "Welcome to Agrico",
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,
@@ -44,10 +43,13 @@ class _SignInPageStateTest extends State<SignInPageTest> {
         ),
         Spacer(flex: 3),
         Container(
-         margin: EdgeInsets.only(left:30 ),
+          margin: EdgeInsets.only(left: 30),
           child: Align(
             alignment: Alignment.centerLeft,
-            child: Text("Welcome To\nFarmApp !!",style: TextStyle(fontSize: 35,fontWeight: FontWeight.bold,color: Colors.green),),
+            child: Text(
+              "Welcome To\nAgrico ",
+              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.green),
+            ),
           ),
         ),
         // CachedNetworkImage(
@@ -79,15 +81,18 @@ class _SignInPageStateTest extends State<SignInPageTest> {
         ),
         FlatButton(
           onPressed: () {
-            // Navigator.of(context).push(
-            //   MaterialPageRoute(
-            //     builder: (ctx) => ContentController(),
-            //   ),
-            // );
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                  builder: (ctx) => HomePage(),
+                  ),
+            );
           },
           child: Text(
             "Developer ivide kuthuka",
-            style: TextStyle(color: Colors.blue[900], decoration: TextDecoration.underline),
+            style: TextStyle(
+              color: Colors.white,
+              decoration: TextDecoration.underline,
+            ),
           ),
           // color: Colors.pink,
         ),
