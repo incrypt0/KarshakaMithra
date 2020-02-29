@@ -1,5 +1,8 @@
+import 'package:farm_app/data/scheme.dart';
 import 'package:farm_app/screens/category_page.dart';
+
 import 'package:farm_app/services/authentication/auth.dart';
+import 'package:farm_app/services/database/database.dart';
 import 'package:farm_app/widgets/scroll_img.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,6 +35,17 @@ class HomePage extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
+    print("blah blah blah!!!");
+    schemeList.forEach((val) {
+      DatabaseService().updateSchemeData1(
+        id: val.id,
+        name:val.name,
+        description: val.description,
+        imageUrl: val.imgUrl,
+        link: val.link,
+        number: 0,
+      );
+    });
     return Scaffold(
       drawer: Drawer(
         child: Column(
@@ -249,10 +263,15 @@ class HomePage extends StatelessWidget {
             ),
           ),
           SliverToBoxAdapter(
-            child: Container(
-              margin: EdgeInsets.all(10),
-              decoration: BoxDecoration(
-                border: Border.all(width: .25, color: Colors.black),
+            child: InkWell(
+              onTap: () {
+                // Navigator.of(context).push(MaterialPageRoute(builder: (ctx) => Fetch()));
+              },
+              child: Container(
+                margin: EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                  border: Border.all(width: .25, color: Colors.black),
+                ),
               ),
             ),
           ),

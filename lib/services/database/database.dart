@@ -6,7 +6,30 @@ class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
   final CollectionReference userCollection = Firestore.instance.collection('users');
+  final CollectionReference schemeApplicationsCollection = Firestore.instance.collection('schemeapplications');
   final CollectionReference schemeCollection = Firestore.instance.collection('schemes');
+//getting document snapshots when changes occur
+  // Stream<List<SchemeData>> get brews {
+  //   return schemeCollection.snapshots().map(_userDataListFromSnapshot);
+  // }
+Stream<List<Scheme>> get schemes {
+  return schemeCollection.snapshots().map(_schemeListFromSnapshot);
+}
+//brew list from snapshot
+  List<Scheme> _schemeListFromSnapshot(QuerySnapshot snap) {
+    return snap.documents
+        .map(
+          (docSnap) => Scheme(
+            id: docSnap['id'],
+            name: docSnap['name'],
+            description: docSnap['description'],
+            imgUrl: docSnap['imgUrl'],
+            link: docSnap['link'],
+            number: docSnap['number'],
+          ),
+        )
+        .toList();
+  }
 
 //method for user data updation
   Future updateUserData({
@@ -37,8 +60,28 @@ class DatabaseService {
       
     });
   }
+  Future updateSchemeData1({
+    String name,
+    String id,
+    int number,
+    String description,
+    String imageUrl,
+    String link,
+   
+    
+    
+  }) async {
+    return await schemeCollection.document(id).setData({
+      'id':id,
+      'name':name,
+      'number':number,
+      'description':description,
+      'imageUrl':imageUrl,
+      'link':link,
+    });
+  }
 
-  Future updateSchemeData({
+  Future updateSchemeApplicationData({
     String userid,
     String name,
     String email,
@@ -50,13 +93,15 @@ class DatabaseService {
     String accountNo,
     String ifsc,
     String schemeId,
+    String krishibhavan,
     bool applicationStatus=false,
     bool applied=false,
     int number,
     
     
   }) async {
-    return await schemeCollection.document(schemeId).setData({
+    print(schemeId+'\n'+uid);
+    return await schemeApplicationsCollection.document("$schemeId$uid").setData({
       'name': name ?? '',
       'email': email ?? '',
       'phoneNo': phoneNo,
@@ -71,8 +116,10 @@ class DatabaseService {
       'number':number,
       'approved':applicationStatus,
       'applied':applied,
+      'krishibhavan':krishibhavan,
       // 'scheme':scheme,
     });
+    print(schemeId+'\n'+uid);
   }
 
 //userdata form snapshot
@@ -88,6 +135,7 @@ class DatabaseService {
       gender: docSnap['gender'],
       accountNo: docSnap['accountNo'],
       address: docSnap['address'],
+
     );
   }
 

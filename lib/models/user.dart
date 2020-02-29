@@ -15,6 +15,7 @@ class UserData {
   final String accountNo;
   final String ifsc;
   final List applied;
+  final String krishibhavan;
   
   UserData({
     this.uid,
@@ -27,7 +28,8 @@ class UserData {
     this.gender,
     this.pincode,
     this.ifsc,
-    this.applied
+    this.applied,
+    this.krishibhavan,
     
   });
 }

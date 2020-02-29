@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:farm_app/data/scheme.dart';
 import 'package:farm_app/screens/application_form.dart';
 import 'package:farm_app/services/authentication/auth.dart';
+import 'package:farm_app/services/database/database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -11,6 +12,7 @@ class SchemePage extends StatelessWidget {
   SchemePage(this.scheme);
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: AppBar(
         title: FittedBox(
