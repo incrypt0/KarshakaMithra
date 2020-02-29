@@ -1,4 +1,6 @@
 import 'package:farm_app/data/constants.dart';
+import 'package:farm_app/services/authentication/auth.dart';
+
 
 
 import 'package:flutter/material.dart';
@@ -60,10 +62,10 @@ class _SignInWithPasswordFormState extends State<SignInWithPasswordForm> {
             ),
             SizedBox(height: 20),
             RaisedButton(
-              onPressed: () {
+              onPressed: () async{
                 print(email);
                 print(password);
-                // AuthService().signInWithEmailAndPassword(email, password);
+                await AuthService().signInWithEmailAndPassword(email, password);
               },
               textColor: Colors.white,
               child: Text("Sign In"),
@@ -100,6 +102,7 @@ class _SignInWithOtpFormState extends State<SignInWithOtpForm> {
               child: TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: " Phone No",),
                 keyboardType: TextInputType.phone,
+                validator: (val)=>val.isEmpty ?'Enter A Phone No :': '',
                 
                 onChanged: (val) {
                   // setState(() {
@@ -113,10 +116,11 @@ class _SignInWithOtpFormState extends State<SignInWithOtpForm> {
             SizedBox(height: 20),
             RaisedButton(
               onPressed: () async {
+                _formkey.currentState.validate();
                 print(phoneNo);
-                // await AuthService().verifyPhone(
-                //   phoneNo: phoneNo,
-                // );
+                await AuthService().verifyPhone(
+                  phoneNo: phoneNo,
+                );
               },
               textColor: Colors.white,
               child: Text("Send OTP"),

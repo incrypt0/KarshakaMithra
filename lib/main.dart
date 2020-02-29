@@ -1,5 +1,8 @@
-import 'package:farm_app/screens/authenticate.dart';
+import 'package:farm_app/models/user.dart';
+import 'package:farm_app/screens/wrapper.dart';
+import 'package:farm_app/services/authentication/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() => runApp(MyApp());
 
@@ -32,11 +35,10 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      // appBar: AppBar(title: Text("Farm App"),),
-      body: 
-        Authenticate(),
-     
+    return  StreamProvider<User>.value(
+      value: AuthService().user ,
+      // value: ,
+      child: Wrapper(),
     );
   }
 }

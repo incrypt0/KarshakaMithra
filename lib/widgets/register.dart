@@ -1,3 +1,4 @@
+import 'package:farm_app/services/authentication/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:farm_app/data/constants.dart';
 
@@ -58,12 +59,12 @@ class _RegisterFormState extends State<RegisterForm> {
             SizedBox(height: 20),
             RaisedButton(
               onPressed: () async {
-                // AuthService().registerWithEmailAndPassword(
-                //   email: email,
-                //   password: password,
-                //   name: name,
-                //   phoneNo: phoneNo,
-                // );
+                AuthService().registerWithEmailAndPassword(
+                  email: email,
+                  password: password,
+                  name: name,
+                  phoneNo: phoneNo,
+                );
                 
               },
               textColor: Colors.white,
