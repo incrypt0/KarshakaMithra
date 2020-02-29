@@ -12,6 +12,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      supportedLocales: [
+    const Locale('en', 'US'), // American English
+    const Locale('ml', 'IN'), 
+    // ...
+  ],
       theme: ThemeData(
         primarySwatch: Colors.green,
         fontFamily: 'Proxima Nova',

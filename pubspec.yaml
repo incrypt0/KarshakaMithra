@@ -75,5 +75,9 @@ flutter:
     - family: Open Sans
       fonts:
         - asset: assets/fonts/opensansregular.ttf
+    - family: Rachana
+      fonts:
+        - asset: assets/fonts/rachana.ttf
+        
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

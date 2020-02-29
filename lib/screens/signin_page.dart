@@ -34,7 +34,7 @@ class _SignInPageStateTest extends State<SignInPageTest> {
         ),
         Spacer(),
         Text(
-          "Welcome to Agrico",
+          "കർഷകമിത്ര",
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,
@@ -47,8 +47,8 @@ class _SignInPageStateTest extends State<SignInPageTest> {
           child: Align(
             alignment: Alignment.centerLeft,
             child: Text(
-              "Welcome To\nAgrico ",
-              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.green),
+              "കർഷകമിത്ര",
+              style: TextStyle(fontSize: 35, fontWeight: FontWeight.bold, color: Colors.brown[500]),
             ),
           ),
         ),
@@ -62,7 +62,7 @@ class _SignInPageStateTest extends State<SignInPageTest> {
         FlatButton(
           onPressed: widget.toggleSignIn,
           child: Text(
-            "Don' have an account?  Register here",
+            "Don't have an account?  Register here",
             style: TextStyle(color: Colors.blue[900]),
           ),
           // color: Colors.pink,

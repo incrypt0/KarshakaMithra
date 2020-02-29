@@ -100,7 +100,7 @@ class _SignInWithOtpFormState extends State<SignInWithOtpForm> {
               height: 45,
               margin: EdgeInsets.symmetric(vertical: 20),
               child: TextFormField(
-                decoration: textInputDecoration.copyWith(hintText: " Phone No",),
+                decoration: textInputDecoration.copyWith(hintText: " ഫോൺ",),
                 keyboardType: TextInputType.phone,
                 validator: (val)=>val.isEmpty ?'Enter A Phone No :': '',
                 

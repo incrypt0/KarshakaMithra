@@ -18,7 +18,7 @@ class DatabaseService {
     String accountNo,
     String ifsc,
   }) async {
-    return await userCollection.document(uid).setData({
+    return await userCollection.document(uid).updateData({
       'name': name ,
       'email': email ?? '',
       'phoneNo': phoneNo,

@@ -21,14 +21,14 @@ class HomePage extends StatelessWidget {
     'https://image.flaticon.com/icons/svg/862/862819.svg'
   ];
   List<String> cats = [
-    'Grants',
-    'Insurance',
-    'Loans',
-    'Services',
-    'Equipments',
-    'Training',
-    'Support',
-    'market',
+    'ആനുകൂല്യങ്ങൾ',
+    'ഇൻഷുറൻസ്',
+    'ലോൺ',
+    'സേവനങ്ങൾ',
+    'ഉപകരണങ്ങൾ',
+    'പരിശീലനങ്ങൾ',
+    'പിന്തുണ',
+    'വിപണി',
   ];
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,13 @@ class HomePage extends StatelessWidget {
               height: 50,
             ),
             ListTile(
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (ctx) => CategoryScreen(),
+                  ),
+                );
+              },
               leading: CircleAvatar(
                 backgroundColor: Colors.transparent,
                 maxRadius: 25,
@@ -113,8 +120,8 @@ class HomePage extends StatelessWidget {
             // leading: Icon(Icons.menu),
             // leading: Icon(Icons.select_all),
             title: Text(
-              "Agrico",
-              style: TextStyle(fontSize: 28),
+              "കർഷകമിത്ര",
+              style: TextStyle(fontSize: 28, fontFamily: 'Rachana'),
             ),
             centerTitle: true,
             actions: <Widget>[
@@ -157,7 +164,7 @@ class HomePage extends StatelessWidget {
               maxCrossAxisExtent: 100,
               mainAxisSpacing: 10.0,
               crossAxisSpacing: 10.0,
-              childAspectRatio: 1,
+              childAspectRatio: .9,
             ),
             delegate: SliverChildBuilderDelegate(
               (BuildContext context, int index) {
@@ -170,6 +177,7 @@ class HomePage extends StatelessWidget {
                     );
                   },
                   child: Container(
+                    padding: EdgeInsets.all(5),
                     alignment: Alignment.center,
                     child: Column(
                       children: <Widget>[
@@ -184,7 +192,7 @@ class HomePage extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Text(cats[index]),
+                        FittedBox(child: Text(cats[index])),
                       ],
                     ),
                   ),
@@ -210,7 +218,7 @@ class HomePage extends StatelessWidget {
                     color: Colors.green,
                   ),
                   onTap: () {},
-                  title: Text("Applied"),
+                  title: Text("പൂർത്തിയാക്കിയ സ്കീമുകൾ"),
                   trailing: Icon(Icons.chevron_right),
                 ),
                 ListTile(
@@ -219,7 +227,7 @@ class HomePage extends StatelessWidget {
                     MdiIcons.clock,
                     color: Colors.green,
                   ),
-                  title: Text("Pending"),
+                  title: Text("പെന്റിങ്"),
                   trailing: Icon(Icons.chevron_right),
                 ),
                 ListTile(
@@ -228,7 +236,7 @@ class HomePage extends StatelessWidget {
                     Icons.assignment_turned_in,
                     color: Colors.green,
                   ),
-                  title: Text("Eligible"),
+                  title: Text("യോഗ്യതയുള്ള  സ്കീമുകൾ"),
                   trailing: Icon(Icons.chevron_right),
                 ),
                 // ListTile(title: Text("Applied"),trailing: Icon(Icons.chevron_right),),
