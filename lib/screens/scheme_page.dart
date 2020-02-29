@@ -13,13 +13,18 @@ class SchemePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(scheme.name),
+        title: FittedBox(
+          child: Text(
+            scheme.name,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              height: 200,
+              height: 220,
               width: double.infinity,
               child: Stack(
                 children: <Widget>[
@@ -36,10 +41,12 @@ class SchemePage extends StatelessWidget {
                       color: Colors.black26,
                       child: Align(
                         alignment: Alignment.center,
-                        child: Text(
-                          scheme.name,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(fontSize: 20),
+                        child: FittedBox(
+                          child: Text(
+                            scheme.name,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 20),
+                          ),
                         ),
                       ),
                     ),
@@ -50,7 +57,16 @@ class SchemePage extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               child: FlatButton(
-                onPressed: () {Navigator.of(context).push(MaterialPageRoute(builder: (ctx)=>StreamProvider.value(value: AuthService().user,child: ApplicationForm(scheme))));},
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (ctx) => StreamProvider.value(
+                        value: AuthService().user,
+                        child: ApplicationForm(scheme),
+                      ),
+                    ),
+                  );
+                },
                 color: Colors.green,
                 child: Text(
                   "Apply Now",
@@ -63,7 +79,7 @@ class SchemePage extends StatelessWidget {
             Container(
               margin: EdgeInsets.all(20),
               padding: EdgeInsets.all(10),
-              height: 220,
+              height: 250,
               width: double.infinity,
               decoration: BoxDecoration(
                 // border: Border.all(width: 2, color: Colors.black),
@@ -80,13 +96,16 @@ class SchemePage extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  SizedBox(height:10),
-                  Text('○ Is enrolled under a skill development training program and wants to work in an eligible sector'),
-                  SizedBox(height:10),
-                  Text('○ Is certified for a period of one year from the time when the scheme is launched.'),
-                  SizedBox(height:10),
-                  Text('○ On a condition is getting the reward money for the first and only time during his entire lifetime'),
-                  SizedBox(height:10),
+                  SizedBox(height: 10),
+                  Text(
+                      '○ ഒരു നൈപുണ്യ വികസന പരിശീലന പരിപാടിയിൽ ചേർന്നു, യോഗ്യതയുള്ള ഒരു മേഖലയിൽ പ്രവർത്തിക്കാൻ ആഗ്രഹിക്കുന്നു'),
+                  SizedBox(height: 10),
+                  Text(
+                      '○ സ്കീം സമാരംഭിച്ച സമയം മുതൽ ഒരു വർഷത്തേക്ക് സർട്ടിഫിക്കറ്റ് നൽകുന്നു.'),
+                  SizedBox(height: 10),
+                  Text(
+                      '○ ഒരു വ്യവസ്ഥയിൽ, അവന്റെ ജീവിതകാലം മുഴുവൻ ആദ്യത്തെ, ഒരേയൊരു സമയത്തേക്ക് റിവാർഡ് പണം ലഭിക്കുന്നു'),
+                  SizedBox(height: 10),
                 ],
               ),
             ),
@@ -113,9 +132,16 @@ class SchemePage extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(scheme.description,textAlign: TextAlign.justify,),
+                  Text(
+                    scheme.description,
+                    textAlign: TextAlign.justify,
+                  ),
                 ],
               ),
+            ),
+            Align(
+              child: Image.asset('assets/images/a.jpg'),
+              alignment: Alignment.center,
             ),
             Container(
               alignment: Alignment.center,
@@ -130,7 +156,7 @@ class SchemePage extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height:30),
+            SizedBox(height: 30),
           ],
         ),
       ),

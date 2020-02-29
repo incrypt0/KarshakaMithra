@@ -1,10 +1,12 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:farm_app/data/scheme.dart';
 import 'package:farm_app/models/user.dart';
 
 class DatabaseService {
   final String uid;
   DatabaseService({this.uid});
   final CollectionReference userCollection = Firestore.instance.collection('users');
+  final CollectionReference schemeCollection = Firestore.instance.collection('schemes');
 
 //method for user data updation
   Future updateUserData({
@@ -17,17 +19,59 @@ class DatabaseService {
     String pincode,
     String accountNo,
     String ifsc,
+   
+    
+    
   }) async {
-    return await userCollection.document(uid).updateData({
+    return await userCollection.document(uid).setData({
       'name': name ,
       'email': email ?? '',
       'phoneNo': phoneNo,
       'gender': gender ?? '',
-      'aadharNo': accountNo ?? '',
+      'aadharNo': aadharNo ?? '',
       'address': address ?? '',
       'pincode': pincode ?? '',
       'accountNo': accountNo ?? '',
       'ifsc': ifsc,
+      
+      
+    });
+  }
+
+  Future updateSchemeData({
+    String userid,
+    String name,
+    String email,
+    String phoneNo,
+    String gender,
+    String aadharNo,
+    String address,
+    String pincode,
+    String accountNo,
+    String ifsc,
+    String schemeId,
+    bool applicationStatus=false,
+    bool applied=false,
+    int number,
+    
+    
+  }) async {
+    return await schemeCollection.document(schemeId).setData({
+      'name': name ?? '',
+      'email': email ?? '',
+      'phoneNo': phoneNo,
+      'gender': gender ?? '',
+      'aadharNo': aadharNo ?? '',
+      'address': address ?? '',
+      'pincode': pincode ?? '',
+      'accountNo': accountNo ?? '',
+      'ifsc': ifsc,
+       'userid':uid,
+      'schemeid':schemeId,
+      'number':number,
+      'approved':applicationStatus,
+      'applied':applied,
+      // 'scheme':scheme,
     });
   }
 

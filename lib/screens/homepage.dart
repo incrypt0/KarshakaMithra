@@ -136,6 +136,11 @@ class HomePage extends StatelessWidget {
           ),
           SliverToBoxAdapter(
             child: Container(
+              width: double.infinity,
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
               height: MediaQuery.of(context).size.height * .24,
               child: ListView.builder(
                 itemBuilder: (ctx, index) {
